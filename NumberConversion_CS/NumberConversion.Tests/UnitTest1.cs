@@ -3,11 +3,10 @@ using Xunit;
 
 namespace NumberConversion.Tests
 {
-    public class UnitTest1
-    {
+    public class NumberConverterTests {
+
         [Fact]
-        public void Test1()
-        {
+        public void Test1() {
 
         }
     }
