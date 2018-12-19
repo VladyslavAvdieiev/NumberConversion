@@ -21,7 +21,7 @@ namespace NumberConversion
         /// Converts integer part of number from decimal number system to any one.
         /// </summary>
         /// <param name="integerPartOfNumber">Any number in decimal number system.</param>
-        /// <param name="system">Number system in which number should be be converted.</param>
+        /// <param name="system">Number system in which number should be converted to.</param>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
             throw new NotImplementedException();
         }
@@ -39,7 +39,7 @@ namespace NumberConversion
         /// Converts fraction part of number from decimal number system to any one.
         /// </summary>
         /// <param name="fractionPartOfNumber">Any number in decimal number system.</param>
-        /// <param name="system">Number system in which number should be converted.</param>
+        /// <param name="system">Number system in which number should be converted to.</param>
         public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system) {
             throw new NotImplementedException();
         }
