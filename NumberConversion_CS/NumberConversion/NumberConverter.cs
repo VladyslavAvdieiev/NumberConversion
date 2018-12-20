@@ -28,6 +28,13 @@ namespace NumberConversion
             if (system < 2 || system > Alphabet.Count)
                 throw new IndexOutOfRangeException("Number system index is out of range.");
 
+            /*Validation of the number*/
+            foreach (char digit in integerPartOfNumber)
+                if (!Alphabet.Contains(digit))
+                    throw new ArgumentException("Arguments of number are not valid.");
+                else if (Alphabet.IndexOf(digit) > system - 1)
+                    throw new ArgumentException("Arguments of number are not valid.");
+
             /*Converting mechanism*/
             int dec = 0;
             int degree = integerPartOfNumber.Length;
