@@ -27,5 +27,17 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Throws<IndexOutOfRangeException>(() => NumberConverter.ConvertIntegerPartToDecimal(string.Empty, system));
         }
+
+        [Theory]
+        [InlineData("10.20", 10)]   // invalid symbols
+        [InlineData("3,145", 10)]   // invalid symbols
+        [InlineData("ABC#D", 10)]   // invalid symbols
+        [InlineData("1129A", 10)]   // number system lower than used char from alphabet
+        [InlineData("110210", 2)]   // number system lower than used char from alphabet
+        [InlineData("656z2", 26)]   // number system lower than used char from alphabet
+        public void ConvertIntegerPartToDecimal_TryToConvertInvalidNumber_Should_ThrowArgumentException(string number, int system) {
+            /*Assert*/
+            Assert.Throws<ArgumentException>(() => NumberConverter.ConvertIntegerPartToDecimal(number, system));
+        }
     }
 }
