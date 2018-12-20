@@ -21,6 +21,9 @@ namespace NumberConversion
         /// <param name="integerPartOfNumber">Any number in any number system.</param>
         /// <param name="system">Number system of that number.</param>
         public static string ConvertIntegerPartToDecimal(string integerPartOfNumber, int system) {
+            /*Converting the number to one letter case*/
+            integerPartOfNumber = integerPartOfNumber.ToUpper();
+
             /*Converting mechanism*/
             int dec = 0;
             int degree = integerPartOfNumber.Length;
