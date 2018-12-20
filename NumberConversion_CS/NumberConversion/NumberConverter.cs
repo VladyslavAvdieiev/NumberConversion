@@ -24,6 +24,10 @@ namespace NumberConversion
             /*Converting the number to one letter case*/
             integerPartOfNumber = integerPartOfNumber.ToUpper();
 
+            /*Checking the number system for belonging to boundaries*/
+            if (system < 2 || system > Alphabet.Count)
+                throw new IndexOutOfRangeException("Number system index is out of range.");
+
             /*Converting mechanism*/
             int dec = 0;
             int degree = integerPartOfNumber.Length;
