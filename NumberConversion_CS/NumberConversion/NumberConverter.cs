@@ -21,7 +21,13 @@ namespace NumberConversion
         /// <param name="integerPartOfNumber">Any number in any number system.</param>
         /// <param name="system">Number system of that number.</param>
         public static string ConvertIntegerPartToDecimal(string integerPartOfNumber, int system) {
-            throw new NotImplementedException();
+            int dec = 0;
+            int degree = integerPartOfNumber.Length;
+
+            for (int i = 0; i < integerPartOfNumber.Length; i++)
+                dec += (int)(Alphabet.IndexOf(integerPartOfNumber[i]) * Math.Pow(system, --degree));
+
+            return dec.ToString();
         }
 
         /// <summary>
