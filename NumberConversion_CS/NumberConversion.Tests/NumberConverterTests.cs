@@ -41,5 +41,20 @@ namespace NumberConversion.Tests
             Assert.Throws<ArgumentException>(() => NumberConverter.ConvertIntegerPartToDecimal(number, system));
         }
         #endregion
+
+        #region ConvertIntegerPartToAnySystem tests
+        [Theory]
+        [InlineData("230", 23, "A0")]   // random number
+        [InlineData("245", 8, "365")]   // random number
+        [InlineData("186", 17, "AG")]   // random number
+        [InlineData("225", 10, "225")]  // decimal to decimal
+        public void ConvertIntegerPartToAnySystem_ConvertIntegerNumberFromDecimalToRandomNumberSystem_Should_ConvertCorrectly(string number, int system, string expected) {
+            /*Act*/
+            string actual = NumberConverter.ConvertIntegerPartToAnySystem(number, system);
+
+            /*Assert*/
+            Assert.Equal(expected, actual);
+        }
+        #endregion
     }
 }
