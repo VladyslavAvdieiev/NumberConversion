@@ -8,6 +8,10 @@ namespace NumberConversion
 {
     public static class NumberConverter {
         /// <summary>
+        /// Represents the value of the decimal number system.
+        /// </summary>
+        public const int Decimal = 10;
+        /// <summary>
         /// Alphabet of number systems.
         /// </summary>
         public static IList<char> Alphabet { get => _alphabet.AsReadOnly(); }

@@ -5,6 +5,7 @@ namespace NumberConversion.Tests
 {
     public class NumberConverterTests {
 
+        #region ConvertIntegerPartToDecimal tests
         [Theory]
         [InlineData("3A", 33, "109")]   // uppercase of number
         [InlineData("ad", 17, "183")]   // lowercase of number
@@ -32,12 +33,13 @@ namespace NumberConversion.Tests
         [InlineData("10.20", 10)]   // invalid symbols
         [InlineData("3,145", 10)]   // invalid symbols
         [InlineData("ABC#D", 10)]   // invalid symbols
-        [InlineData("1129A", 10)]   // number system lower than used char from alphabet
-        [InlineData("110210", 2)]   // number system lower than used char from alphabet
-        [InlineData("656z2", 26)]   // number system lower than used char from alphabet
+        [InlineData("1129A", 10)]   // number system is lower than used char from alphabet
+        [InlineData("110210", 2)]   // number system is lower than used char from alphabet
+        [InlineData("656z2", 26)]   // number system is lower than used char from alphabet
         public void ConvertIntegerPartToDecimal_TryToConvertInvalidNumber_Should_ThrowArgumentException(string number, int system) {
             /*Assert*/
             Assert.Throws<ArgumentException>(() => NumberConverter.ConvertIntegerPartToDecimal(number, system));
         }
+        #endregion
     }
 }
