@@ -65,6 +65,18 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Throws<IndexOutOfRangeException>(() => NumberConverter.ConvertIntegerPartToAnySystem(string.Empty, system));
         }
+
+        [Theory]
+        [InlineData("10.20")]   // invalid symbols
+        [InlineData("3,145")]   // invalid symbols
+        [InlineData("12#88")]   // invalid symbols
+        [InlineData("1129A")]   // used char from alphabet is bigger than decimal number system
+        [InlineData("11b22")]   // used char from alphabet is bigger than decimal number system
+        [InlineData("1C113")]   // used char from alphabet is bigger than decimal number system
+        public void ConvertIntegerPartToAnySystem_TryToConvertInvalidNumber_Should_ThrowArgumentException(string number) {
+            /*Assert*/
+            Assert.Throws<ArgumentException>(() => NumberConverter.ConvertIntegerPartToAnySystem(number, NumberConverter.Decimal));
+        }
         #endregion
     }
 }
