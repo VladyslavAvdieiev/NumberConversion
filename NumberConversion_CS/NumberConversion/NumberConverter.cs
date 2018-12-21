@@ -54,6 +54,10 @@ namespace NumberConversion
         /// <param name="integerPartOfNumber">Any number in decimal number system.</param>
         /// <param name="system">Number system in which number should be converted to.</param>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
+            /*Checking the number system for belonging to boundaries*/
+            if (system < 2 || system > Alphabet.Count)
+                throw new IndexOutOfRangeException("Number system index is out of range.");
+
             /*Converting mechanism*/
             int dec = int.Parse(integerPartOfNumber);
             string result = string.Empty;
