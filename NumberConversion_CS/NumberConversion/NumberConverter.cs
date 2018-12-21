@@ -54,7 +54,15 @@ namespace NumberConversion
         /// <param name="integerPartOfNumber">Any number in decimal number system.</param>
         /// <param name="system">Number system in which number should be converted to.</param>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
-            throw new NotImplementedException();
+            /*Converting mechanism*/
+            int dec = int.Parse(integerPartOfNumber);
+            string result = string.Empty;
+            while (dec != 0) {
+                result = Alphabet[dec % system].ToString() + result;
+                dec /= system;
+            }
+
+            return result;
         }
 
         /// <summary>
