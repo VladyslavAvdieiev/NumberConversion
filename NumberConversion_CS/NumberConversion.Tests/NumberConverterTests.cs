@@ -115,5 +115,20 @@ namespace NumberConversion.Tests
             Assert.Throws<ArgumentException>(() => NumberConverter.ConvertFractionPartToDecimal(number, system));
         }
         #endregion
+
+        #region ConvertFractionPartToAnySystem tests
+        [Theory]
+        [InlineData("625", 8, "5")]                 // random number
+        [InlineData("2", 2, "0011001100110011")]    // random infinite number
+        [InlineData("42", 5, "2022222222222222")]   // random infinite number
+        [InlineData("194", 10, "194")]              // decimal to decimal
+        public void ConvertFractionPartToAnySystem_ConvertFractionNumberFromDecimalToRandomNumberSystem_Should_ConvertCorrectly(string number, int system, string expected) {
+            /*Act*/
+            string actual = NumberConverter.ConvertFractionPartToAnySystem(number, system);
+
+            /*Assert*/
+            Assert.Equal(expected, actual);
+        }
+        #endregion
     }
 }
