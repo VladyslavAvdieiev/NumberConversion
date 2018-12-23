@@ -78,5 +78,20 @@ namespace NumberConversion.Tests
             Assert.Throws<ArgumentException>(() => NumberConverter.ConvertIntegerPartToAnySystem(number, NumberConverter.Decimal));
         }
         #endregion
+
+        #region ConvertFractionPartToDecimal tests
+        [Theory]
+        [InlineData("3A", 33, "10009182736455")]    // uppercase of number
+        [InlineData("ad", 17, "63321799307958")]    // lowercase of number
+        [InlineData("423", 8, "537109375")]         // random number
+        [InlineData("25", 10, "25")]                // decimal to decimal
+        public void ConvertFractionPartToDecimal_ConvertIntegerFractionFromRandomNumberSystemToDecimal_Should_ConvertCorrectly(string number, int system, string expected) {
+            /*Act*/
+            string actual = NumberConverter.ConvertFractionPartToDecimal(number, system);
+
+            /*Assert*/
+            Assert.Matches(expected, actual);
+        }
+        #endregion
     }
 }
