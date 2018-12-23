@@ -112,6 +112,10 @@ namespace NumberConversion
         /// <param name="system">Number system in which number should be converted to.</param>
         /// <param name="accuracy">Accuracy of converted number.</param>
         public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system, int accuracy = 16) {
+            /*Checking the number system for belonging to boundaries*/
+            if (system < 2 || system > Alphabet.Count)
+                throw new IndexOutOfRangeException("Number system index is out of range.");
+            
             /*Converting mechanism*/
             decimal dec = Convert.ToDecimal($"0,{fractionPartOfNumber}");
             string result = string.Empty;
