@@ -115,7 +115,14 @@ namespace NumberConversion
             /*Checking the number system for belonging to boundaries*/
             if (system < 2 || system > Alphabet.Count)
                 throw new IndexOutOfRangeException("Number system index is out of range.");
-            
+
+            /*Validation of the number*/
+            foreach (char digit in fractionPartOfNumber)
+                if (!Alphabet.Contains(digit))
+                    throw new ArgumentException("Arguments of number are not valid.");
+                else if (Alphabet.IndexOf(digit) > Decimal - 1)
+                    throw new ArgumentException("Arguments of number are not valid.");
+
             /*Converting mechanism*/
             decimal dec = Convert.ToDecimal($"0,{fractionPartOfNumber}");
             string result = string.Empty;
