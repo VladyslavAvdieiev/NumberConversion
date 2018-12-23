@@ -85,6 +85,10 @@ namespace NumberConversion
             /*Converting the number to one letter case*/
             fractionPartOfNumber = fractionPartOfNumber.ToUpper();
 
+            /*Checking the number system for belonging to boundaries*/
+            if (system < 2 || system > Alphabet.Count)
+                throw new IndexOutOfRangeException("Number system index is out of range.");
+            
             /*Converting mechanism*/
             double dec = 0;
             int degree = 0;
