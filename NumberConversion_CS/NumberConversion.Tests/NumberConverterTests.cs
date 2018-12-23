@@ -102,6 +102,18 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Throws<IndexOutOfRangeException>(() => NumberConverter.ConvertFractionPartToDecimal(string.Empty, system));
         }
+
+        [Theory]
+        [InlineData("10.20", 10)]   // invalid symbols
+        [InlineData("3,145", 10)]   // invalid symbols
+        [InlineData("ABC#D", 10)]   // invalid symbols
+        [InlineData("1129A", 10)]   // number system is lower than used char from alphabet
+        [InlineData("110210", 2)]   // number system is lower than used char from alphabet
+        [InlineData("656z2", 26)]   // number system is lower than used char from alphabet
+        public void ConvertFractionPartToDecimal_TryToConvertInvalidNumber_Should_ThrowArgumentException(string number, int system) {
+            /*Assert*/
+            Assert.Throws<ArgumentException>(() => NumberConverter.ConvertFractionPartToDecimal(number, system));
+        }
         #endregion
     }
 }
