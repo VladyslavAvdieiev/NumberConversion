@@ -12,7 +12,7 @@ namespace NumberConversion
         /// </summary>
         public const int Decimal = 10;
         /// <summary>
-        /// Alphabet of number systems.
+        /// Represents the alphabet of the number systems.
         /// </summary>
         public static IList<char> Alphabet { get => _alphabet.AsReadOnly(); }
         private static List<char> _alphabet = new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B',
@@ -22,8 +22,8 @@ namespace NumberConversion
         /// <summary>
         /// Converts integer part of number from any number system to decimal one.
         /// </summary>
-        /// <param name="integerPartOfNumber">Any number in any number system.</param>
-        /// <param name="system">Number system of that number.</param>
+        /// <param name="integerPartOfNumber">Represents any number in any number system.</param>
+        /// <param name="system">Represents the number system of that number.</param>
         public static string ConvertIntegerPartToDecimal(string integerPartOfNumber, int system) {
             /*Converting the number to one letter case*/
             integerPartOfNumber = integerPartOfNumber.ToUpper();
@@ -51,8 +51,8 @@ namespace NumberConversion
         /// <summary>
         /// Converts integer part of number from decimal number system to any one.
         /// </summary>
-        /// <param name="integerPartOfNumber">Any number in decimal number system.</param>
-        /// <param name="system">Number system in which number should be converted to.</param>
+        /// <param name="integerPartOfNumber">Represents any number in decimal number system.</param>
+        /// <param name="system">Represents the number system in which number should be converted to.</param>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
             /*Checking the number system for belonging to boundaries*/
             if (system < 2 || system > Alphabet.Count)
@@ -79,8 +79,8 @@ namespace NumberConversion
         /// <summary>
         /// Converts fraction part of number from any number system to decimal one.
         /// </summary>
-        /// <param name="fractionPartOfNumber">Any number in any number system.</param>
-        /// <param name="system">Number system of that number.</param>
+        /// <param name="fractionPartOfNumber">Represents any number in any number system.</param>
+        /// <param name="system">Represents the number system of that number.</param>
         public static string ConvertFractionPartToDecimal(string fractionPartOfNumber, int system) {
             /*Converting the number to one letter case*/
             fractionPartOfNumber = fractionPartOfNumber.ToUpper();
@@ -108,9 +108,9 @@ namespace NumberConversion
         /// <summary>
         /// Converts fraction part of number from decimal number system to any one.
         /// </summary>
-        /// <param name="fractionPartOfNumber">Any number in decimal number system.</param>
-        /// <param name="system">Number system in which number should be converted to.</param>
-        /// <param name="accuracy">Accuracy of converted number.</param>
+        /// <param name="fractionPartOfNumber">Represents any number in decimal number system.</param>
+        /// <param name="system">Represents the number system in which number should be converted to.</param>
+        /// <param name="accuracy">Represents the accuracy of converted number.</param>
         public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system, int accuracy = 16) {
             /*Checking the number system for belonging to boundaries*/
             if (system < 2 || system > Alphabet.Count)
