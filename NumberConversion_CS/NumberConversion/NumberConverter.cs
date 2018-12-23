@@ -110,8 +110,19 @@ namespace NumberConversion
         /// </summary>
         /// <param name="fractionPartOfNumber">Any number in decimal number system.</param>
         /// <param name="system">Number system in which number should be converted to.</param>
-        public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system) {
-            throw new NotImplementedException();
+        /// <param name="accuracy">Accuracy of converted number.</param>
+        public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system, int accuracy = 16) {
+            /*Converting mechanism*/
+            decimal dec = Convert.ToDecimal($"0,{fractionPartOfNumber}");
+            string result = string.Empty;
+            int currentAccuracy = 0;
+            while (dec != 0 && currentAccuracy < accuracy) {
+                result += Alphabet[(int)(dec *= system)].ToString();
+                dec -= (int)dec;
+                currentAccuracy++;
+            }
+
+            return result;
         }
     }
 }
