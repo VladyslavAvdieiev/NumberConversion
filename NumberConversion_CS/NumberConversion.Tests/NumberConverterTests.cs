@@ -92,6 +92,16 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Matches(expected, actual);
         }
+
+        [Theory]
+        [InlineData(-5)]    // far from the boundary
+        [InlineData(1)]     // near the boundary
+        [InlineData(37)]    // near the boundary
+        [InlineData(42)]    // far from the boundary
+        public void ConvertFractionPartToDecimal_TryToConvertDataFromInvalidNumberSystem_Should_ThrowIndexOutOfRangeException(int system) {
+            /*Assert*/
+            Assert.Throws<IndexOutOfRangeException>(() => NumberConverter.ConvertFractionPartToDecimal(string.Empty, system));
+        }
         #endregion
     }
 }
