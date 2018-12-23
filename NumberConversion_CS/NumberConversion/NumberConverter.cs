@@ -82,7 +82,16 @@ namespace NumberConversion
         /// <param name="fractionPartOfNumber">Any number in any number system.</param>
         /// <param name="system">Number system of that number.</param>
         public static string ConvertFractionPartToDecimal(string fractionPartOfNumber, int system) {
-            throw new NotImplementedException();
+            /*Converting the number to one letter case*/
+            fractionPartOfNumber = fractionPartOfNumber.ToUpper();
+
+            /*Converting mechanism*/
+            double dec = 0;
+            int degree = 0;
+            foreach (char digit in fractionPartOfNumber)
+                dec += Alphabet.IndexOf(digit) * Math.Pow(system, --degree);
+
+            return dec.ToString().Split('.',',')[1];
         }
 
         /// <summary>
