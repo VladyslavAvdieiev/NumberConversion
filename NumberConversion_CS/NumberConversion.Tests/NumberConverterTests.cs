@@ -129,6 +129,16 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(-5)]    // far from the boundary
+        [InlineData(1)]     // near the boundary
+        [InlineData(37)]    // near the boundary
+        [InlineData(42)]    // far from the boundary
+        public void ConvertFractionPartToAnySystem_TryToConvertDataToInvalidNumberSystem_Should_ThrowIndexOutOfRangeException(int system) {
+            /*Assert*/
+            Assert.Throws<IndexOutOfRangeException>(() => NumberConverter.ConvertFractionPartToAnySystem(string.Empty, system));
+        }
         #endregion
     }
 }
