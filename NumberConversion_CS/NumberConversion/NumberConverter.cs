@@ -28,16 +28,8 @@ namespace NumberConversion
             /*Converting the number to one letter case*/
             integerPartOfNumber = integerPartOfNumber.ToUpper();
 
-            /*Checking the number system for belonging to boundaries*/
-            if (system < 2 || system > Alphabet.Count)
-                throw new IndexOutOfRangeException("Number system index is out of range.");
-
-            /*Validation of the number*/
-            foreach (char digit in integerPartOfNumber)
-                if (!Alphabet.Contains(digit))
-                    throw new ArgumentException("Arguments of number are not valid.");
-                else if (Alphabet.IndexOf(digit) > system - 1)
-                    throw new ArgumentException("Arguments of number are not valid.");
+            /*Data verification*/
+            VerifyData(integerPartOfNumber, system, system - 1);
 
             /*Converting mechanism*/
             int dec = 0;
@@ -54,16 +46,8 @@ namespace NumberConversion
         /// <param name="integerPartOfNumber">Represents any number in decimal number system.</param>
         /// <param name="system">Represents the number system in which number should be converted to.</param>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
-            /*Checking the number system for belonging to boundaries*/
-            if (system < 2 || system > Alphabet.Count)
-                throw new IndexOutOfRangeException("Number system index is out of range.");
-
-            /*Validation of the number*/
-            foreach (char digit in integerPartOfNumber)
-                if (!Alphabet.Contains(digit))
-                    throw new ArgumentException("Arguments of number are not valid.");
-                else if (Alphabet.IndexOf(digit) > Decimal - 1)
-                    throw new ArgumentException("Arguments of number are not valid.");
+            /*Data verification*/
+            VerifyData(integerPartOfNumber, system, Decimal - 1);
 
             /*Converting mechanism*/
             int dec = int.Parse(integerPartOfNumber);
@@ -85,16 +69,8 @@ namespace NumberConversion
             /*Converting the number to one letter case*/
             fractionPartOfNumber = fractionPartOfNumber.ToUpper();
 
-            /*Checking the number system for belonging to boundaries*/
-            if (system < 2 || system > Alphabet.Count)
-                throw new IndexOutOfRangeException("Number system index is out of range.");
-
-            /*Validation of the number*/
-            foreach (char digit in fractionPartOfNumber)
-                if (!Alphabet.Contains(digit))
-                    throw new ArgumentException("Arguments of number are not valid.");
-                else if (Alphabet.IndexOf(digit) > system - 1)
-                    throw new ArgumentException("Arguments of number are not valid.");
+            /*Data verification*/
+            VerifyData(fractionPartOfNumber, system, system - 1);
 
             /*Converting mechanism*/
             double dec = 0;
@@ -112,16 +88,8 @@ namespace NumberConversion
         /// <param name="system">Represents the number system in which number should be converted to.</param>
         /// <param name="accuracy">Represents the accuracy of converted number.</param>
         public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system, int accuracy = 16) {
-            /*Checking the number system for belonging to boundaries*/
-            if (system < 2 || system > Alphabet.Count)
-                throw new IndexOutOfRangeException("Number system index is out of range.");
-
-            /*Validation of the number*/
-            foreach (char digit in fractionPartOfNumber)
-                if (!Alphabet.Contains(digit))
-                    throw new ArgumentException("Arguments of number are not valid.");
-                else if (Alphabet.IndexOf(digit) > Decimal - 1)
-                    throw new ArgumentException("Arguments of number are not valid.");
+            /*Data verification*/
+            VerifyData(fractionPartOfNumber, system, Decimal - 1);
 
             /*Converting mechanism*/
             decimal dec = Convert.ToDecimal($"0,{fractionPartOfNumber}");
@@ -134,6 +102,19 @@ namespace NumberConversion
             }
 
             return result;
+        }
+
+        private static void VerifyData(string number, int system, int boundary) {
+            /*Checking the number system for belonging to boundaries*/
+            if (system < 2 || system > Alphabet.Count)
+                throw new IndexOutOfRangeException("Number system index is out of range.");
+
+            /*Validation of the number*/
+            foreach (char digit in number)
+                if (!Alphabet.Contains(digit))
+                    throw new ArgumentException("Arguments of number are not valid.");
+                else if (Alphabet.IndexOf(digit) > boundary)
+                    throw new ArgumentException("Arguments of number are not valid.");
         }
     }
 }
