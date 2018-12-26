@@ -32,6 +32,19 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Throws<IndexOutOfRangeException>(() => NumberConverterService.Convert(string.Empty, currentSystem, neededSystem));
         }
+
+        [Theory]
+        [InlineData("%%%", 10, 10)]     // invalid symbols
+        [InlineData("56*1", 10, 10)]    // invalid symbols
+        [InlineData("1.1,1", 10, 10)]   // invalid symbols
+        [InlineData("1,1.1", 10, 10)]   // invalid symbols
+        [InlineData("1129A", 10, 10)]   // number system is lower than used char from alphabet
+        [InlineData("1011,5", 2, 10)]   // number system is lower than used char from alphabet
+        [InlineData("656.z2", 26, 10)]  // number system is lower than used char from alphabet
+        public void Convert_TryToConvertInvalidNumber_Should_ThrowArgumentException(string number, int currentSystem, int neededSystem) {
+            /*Assert*/
+            Assert.Throws<ArgumentException>(() => NumberConverterService.Convert(number, currentSystem, neededSystem));
+        }
         #endregion
     }
 }
