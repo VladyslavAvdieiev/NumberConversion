@@ -15,7 +15,25 @@ namespace NumberConversion
         /// <param name="currentSystem">Represents the number system in which number is.</param>
         /// <param name="neededSystem">Represents the number system in which number should be converted to.</param>
         public static string Convert(string number, int currentSystem, int neededSystem) {
-            throw new NotImplementedException();
+            string[] partsOfNumber = number.Split('.', ',');
+
+            if (partsOfNumber.Length == 1) {
+                string decInt = NumberConverter.ConvertIntegerPartToDecimal(partsOfNumber[0], currentSystem);
+                string resInt = NumberConverter.ConvertIntegerPartToAnySystem(decInt, neededSystem);
+
+                return resInt;
+            }
+            else if (partsOfNumber.Length == 2) {
+                string decInt = NumberConverter.ConvertIntegerPartToDecimal(partsOfNumber[0], currentSystem);
+                string resInt = NumberConverter.ConvertIntegerPartToAnySystem(decInt, neededSystem);
+
+                string decFrac = NumberConverter.ConvertFractionPartToDecimal(partsOfNumber[1], currentSystem);
+                string resFrac = NumberConverter.ConvertFractionPartToAnySystem(decFrac, neededSystem);
+
+                return $"{resInt},{resFrac}";
+            }
+
+            throw new ArgumentException("Arguments of number are not valid.");
         }
     }
 }
