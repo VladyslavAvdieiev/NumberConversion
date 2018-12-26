@@ -18,6 +18,20 @@ namespace NumberConversion.Tests
             /*Assert*/
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(-5, 10)]    // far from the boundary
+        [InlineData(1, 10)]     // near the boundary
+        [InlineData(37, 10)]    // near the boundary
+        [InlineData(42, 10)]    // far from the boundary
+        [InlineData(10, -5)]    // far from the boundary
+        [InlineData(10, 1)]     // near the boundary
+        [InlineData(10, 37)]    // near the boundary
+        [InlineData(10, 42)]    // far from the boundary
+        public void Convert_TryToConvertDataWithInvalidNumberSystem_Should_ThrowIndexOutOfRangeException(int currentSystem, int neededSystem) {
+            /*Assert*/
+            Assert.Throws<IndexOutOfRangeException>(() => NumberConverterService.Convert(string.Empty, currentSystem, neededSystem));
+        }
         #endregion
     }
 }
