@@ -57,7 +57,7 @@ namespace NumberConversion
                 dec /= system;
             }
 
-            return result;
+            return result != string.Empty ? result : "0";
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace NumberConversion
             foreach (char digit in fractionPartOfNumber)
                 dec += Alphabet.IndexOf(digit) * Math.Pow(system, --degree);
 
-            return dec.ToString().Split('.',',')[1];
+            return dec.ToString().IndexOf(',') != -1 ? dec.ToString().Split('.',',')[1] : "0";
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace NumberConversion
                 currentAccuracy++;
             }
 
-            return result;
+            return result != string.Empty ? result : "0";
         }
 
         private static void VerifyData(string number, int system, int boundary) {
