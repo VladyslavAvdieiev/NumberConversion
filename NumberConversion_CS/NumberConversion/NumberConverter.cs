@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NumberConversion
 {
+    /// <summary>
+    /// Represents converter of integer and fraction number in different number systems.
+    /// </summary>
     public static class NumberConverter {
         /// <summary>
         /// Represents the value of the decimal number system.
@@ -24,6 +27,8 @@ namespace NumberConversion
         /// </summary>
         /// <param name="integerPartOfNumber">Represents any number in any number system.</param>
         /// <param name="system">Represents the number system of that number.</param>
+        /// <exception cref="ArgumentException">Arguments of number are not valid.</exception>
+        /// <exception cref="IndexOutOfRangeException">Number system index is out of range of alphabet.</exception>
         public static string ConvertIntegerPartToDecimal(string integerPartOfNumber, int system) {
             /*Converting the number to one letter case*/
             integerPartOfNumber = integerPartOfNumber.ToUpper();
@@ -45,6 +50,8 @@ namespace NumberConversion
         /// </summary>
         /// <param name="integerPartOfNumber">Represents any number in decimal number system.</param>
         /// <param name="system">Represents the number system in which number should be converted to.</param>
+        /// <exception cref="ArgumentException">Arguments of number are not valid.</exception>
+        /// <exception cref="IndexOutOfRangeException">Number system index is out of range of alphabet.</exception>
         public static string ConvertIntegerPartToAnySystem(string integerPartOfNumber, int system) {
             /*Data verification*/
             VerifyData(integerPartOfNumber, system, Decimal - 1);
@@ -65,6 +72,8 @@ namespace NumberConversion
         /// </summary>
         /// <param name="fractionPartOfNumber">Represents any number in any number system.</param>
         /// <param name="system">Represents the number system of that number.</param>
+        /// <exception cref="ArgumentException">Arguments of number are not valid.</exception>
+        /// <exception cref="IndexOutOfRangeException">Number system index is out of range of alphabet.</exception>
         public static string ConvertFractionPartToDecimal(string fractionPartOfNumber, int system) {
             /*Converting the number to one letter case*/
             fractionPartOfNumber = fractionPartOfNumber.ToUpper();
@@ -87,6 +96,8 @@ namespace NumberConversion
         /// <param name="fractionPartOfNumber">Represents any number in decimal number system.</param>
         /// <param name="system">Represents the number system in which number should be converted to.</param>
         /// <param name="accuracy">Represents the accuracy of converted number.</param>
+        /// <exception cref="ArgumentException">Arguments of number are not valid.</exception>
+        /// <exception cref="IndexOutOfRangeException">Number system index is out of range of alphabet.</exception>
         public static string ConvertFractionPartToAnySystem(string fractionPartOfNumber, int system, int accuracy = 16) {
             /*Data verification*/
             VerifyData(fractionPartOfNumber, system, Decimal - 1);

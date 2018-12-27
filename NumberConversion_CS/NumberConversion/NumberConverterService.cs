@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NumberConversion
 {
+    /// <summary>
+    /// Represents service of converter of integer and fraction number in different number systems.
+    /// </summary>
     public static class NumberConverterService {
 
         /// <summary>
@@ -14,6 +17,8 @@ namespace NumberConversion
         /// <param name="number">Represents any number in any number system.</param>
         /// <param name="currentSystem">Represents the number system in which number is.</param>
         /// <param name="neededSystem">Represents the number system in which number should be converted to.</param>
+        /// <exception cref="ArgumentException">Arguments of number are not valid.</exception>
+        /// <exception cref="IndexOutOfRangeException">Number system index is out of range of alphabet.</exception>
         public static string Convert(string number, int currentSystem, int neededSystem) {
             string[] partsOfNumber = number.Split('.', ',');
 
