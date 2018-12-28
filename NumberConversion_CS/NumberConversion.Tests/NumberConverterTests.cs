@@ -48,6 +48,7 @@ namespace NumberConversion.Tests
         [InlineData("245", 8, "365")]   // random number
         [InlineData("186", 17, "AG")]   // random number
         [InlineData("225", 10, "225")]  // decimal to decimal
+        [InlineData("", 10, "0")]       // emptiness equal to 0
         public void ConvertIntegerPartToAnySystem_ConvertIntegerNumberFromDecimalToRandomNumberSystem_Should_ConvertCorrectly(string number, int system, string expected) {
             /*Act*/
             string actual = NumberConverter.ConvertIntegerPartToAnySystem(number, system);
@@ -85,6 +86,7 @@ namespace NumberConversion.Tests
         [InlineData("ad", 17, "63321799307958")]    // lowercase of number
         [InlineData("423", 8, "537109375")]         // random number
         [InlineData("25", 10, "25")]                // decimal to decimal
+        [InlineData("", 10, "0")]                   // emptiness equal to 0
         public void ConvertFractionPartToDecimal_ConvertIntegerFractionFromRandomNumberSystemToDecimal_Should_ConvertCorrectly(string number, int system, string expected) {
             /*Act*/
             string actual = NumberConverter.ConvertFractionPartToDecimal(number, system);
@@ -122,6 +124,7 @@ namespace NumberConversion.Tests
         [InlineData("2", 2, "0011001100110011")]    // random infinite number
         [InlineData("42", 5, "2022222222222222")]   // random infinite number
         [InlineData("194", 10, "194")]              // decimal to decimal
+        [InlineData("", 10, "0")]                   // emptiness equal to 0
         public void ConvertFractionPartToAnySystem_ConvertFractionNumberFromDecimalToRandomNumberSystem_Should_ConvertCorrectly(string number, int system, string expected) {
             /*Act*/
             string actual = NumberConverter.ConvertFractionPartToAnySystem(number, system);
