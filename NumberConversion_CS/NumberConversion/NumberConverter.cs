@@ -57,7 +57,7 @@ namespace NumberConversion
             VerifyData(integerPartOfNumber, system, Decimal - 1);
 
             /*Converting mechanism*/
-            int dec = int.Parse(integerPartOfNumber);
+            int dec = integerPartOfNumber != string.Empty ? int.Parse(integerPartOfNumber) : 0;
             string result = string.Empty;
             while (dec != 0) {
                 result = Alphabet[dec % system].ToString() + result;
